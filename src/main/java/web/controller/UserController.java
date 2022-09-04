@@ -18,6 +18,12 @@ public class UserController {
         this.userService = userService;
     }
 
+    @GetMapping(value = "/")
+    public String print(ModelMap model) {
+        model.addAttribute("users", userService.getAllUsers());
+        return "users";
+    }
+
     @GetMapping(value = "/users")
     public String printUsers(ModelMap model) {
         model.addAttribute("users", userService.getAllUsers());
