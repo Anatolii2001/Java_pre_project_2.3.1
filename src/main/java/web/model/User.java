@@ -64,3 +64,4 @@ public class User {
         return Objects.hash(id, email, name, last_name);
     }
 }
+

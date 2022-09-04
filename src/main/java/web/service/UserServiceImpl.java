@@ -44,4 +44,3 @@ public class UserServiceImpl implements UserService {
         userDao.delete(id);
     }
 }
-
