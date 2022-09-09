@@ -1,8 +1,10 @@
 package web.dao;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import web.model.User;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -51,6 +53,16 @@ public class UserDaoImpl implements UserDao {
     public void delete(int id) {
         User user = show(id);
         entityManager.remove(user);
+    }
+
+    @Override
+    public User isExistById(User user) {
+        if(entityManager.contains(user)) {
+            entityManager.remove(user);
+        } else {
+            entityManager.remove(entityManager.merge(user));
+        }
+        return user;
     }
 }
 
